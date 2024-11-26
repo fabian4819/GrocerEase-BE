@@ -7,6 +7,9 @@ export interface IUser extends Document {
     password_hash: string;
     address: string;
     secret: string;
+    name?: string;  
+    latitude?: number; 
+    longitude?: number; 
 }
 
 const UserSchema = new Schema({
@@ -18,7 +21,10 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         default: () => crypto.randomBytes(32).toString('hex')
-    }
+    },
+    name: String,
+    latitude: Number,
+    longitude: Number
 }, { timestamps: true });
 
 export default mongoose.model<IUser>('User', UserSchema);
