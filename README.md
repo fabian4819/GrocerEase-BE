@@ -86,3 +86,4 @@ Made by:
 ## Extras
 
 We use scraping to populate the store information. The scraping repo can be found here: https://github.com/lindduncoding/grocerease-scraper 
+The website is deployed at: https://grocer-ease-be.vercel.app/
