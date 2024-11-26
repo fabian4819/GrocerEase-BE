@@ -1,27 +1,51 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IStore extends Document {
-    name: string;
-    address: string;
-    city: string;
-    phone: string;
-    email: string;
+    store_id: string;
+    owner_id: number;
+    store_name: string;
+    image_link: string;
+    location: string;
     latitude: number;
     longitude: number;
-    business_hours: string;
-    owner_id: mongoose.Types.ObjectId;
+    contact_info: string;
+    opening_hours: string;
+    description: string;
 }
 
 const StoreSchema = new Schema({
-    name: { type: String, required: true },
-    address: { type: String, required: true },
-    city: { type: String, required: true },
-    phone: String,
-    email: String,
-    latitude: Number,
-    longitude: Number,
-    business_hours: String,
-    owner_id: { type: Schema.Types.ObjectId, ref: 'User' }
+    store_id: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    owner_id: {
+        type: Number,
+        required: true
+    },
+    store_name: {
+        type: String,
+        required: true
+    },
+    image_link: {
+        type: String,
+        default: '/img/default-store.jpg'
+    },
+    location: {
+        type: String,
+        required: true
+    },
+    latitude: {
+        type: Number,
+        default: 0.0
+    },
+    longitude: {
+        type: Number,
+        default: 0.0
+    },
+    contact_info: String,
+    opening_hours: String,
+    description: String
 }, { timestamps: true });
 
 export default mongoose.model<IStore>('Store', StoreSchema);

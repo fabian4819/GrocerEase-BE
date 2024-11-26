@@ -24,17 +24,19 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.8.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "uuid": "^11.0.3"
   },
   "devDependencies": {
-    "typescript": "^5.7.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/dompurify": "^3.2.0",
     "@types/express": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/mongoose": "^5.11.97",
     "@types/sequelize": "^4.28.20",
+    "@types/uuid": "^10.0.0",
     "@vercel/node": "^3.2.26",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "typescript": "^5.7.2"
   }
 }
