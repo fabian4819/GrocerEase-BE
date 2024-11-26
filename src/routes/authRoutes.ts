@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { login, register } from '../controllers/authController';
+import { login, register, editProfile } from '../controllers/authController';
 
 const router = Router();
 
@@ -13,6 +13,10 @@ router.post('/login', asyncHandler(async (req: Request, res: Response) => {
 
 router.post('/register', asyncHandler(async (req: Request, res: Response) => {
     await register(req, res);
+}));
+
+router.put('/editProfile/:id', asyncHandler(async (req: Request, res: Response) => {
+    await editProfile(req, res);
 }));
 
 
