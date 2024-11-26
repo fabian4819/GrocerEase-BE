@@ -29,7 +29,7 @@ const ProductSchema = new Schema({
     },
     image_link: {
         type: String,
-        default: '/img/default-product.jpg'
+        default: '/img/default-product.jpg' 
     },
     store_id: {
         type: String,

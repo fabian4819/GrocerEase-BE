@@ -14,11 +14,7 @@ export interface IStore extends Document {
 }
 
 const StoreSchema = new Schema({
-    store_id: {
-        type: String,
-        required: true,
-        unique: true
-    },
+    
     owner_id: {
         type: Number,
         required: true
@@ -43,9 +39,15 @@ const StoreSchema = new Schema({
         type: Number,
         default: 0.0
     },
-    contact_info: String,
-    opening_hours: String,
-    description: String
+    contact_info: {
+        type: String,
+        default: '-'},
+    opening_hours: {
+        type: String,
+        default: '-'},
+    description: {
+        type: String,
+        default: '-'}
 }, { timestamps: true });
 
 export default mongoose.model<IStore>('Store', StoreSchema);
