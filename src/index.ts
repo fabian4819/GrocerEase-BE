@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import routes from './routes';
 import authRoutes from './routes/authRoutes';
 import storeRoutes from './routes/storeRoutes';
+import productRoutes from './routes/productRoutes';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ mongoose.connect(process.env.MONGO_URI!)
 app.use('/api', routes);
 app.use('/api/auth', authRoutes);
 app.use('/api/stores', storeRoutes);
+app.use('/api/products', productRoutes);
 
 
 

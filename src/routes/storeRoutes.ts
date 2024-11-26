@@ -9,7 +9,7 @@ router.get("/", StoreController.getAllStores);
 router.get("/:id", StoreController.getStoreById);
 
 // Protected routes (perlu login)
-router.use(authMiddleware);
+// router.use(authMiddleware);
 router.post("/", StoreController.createStore);
 router.put("/:id", StoreController.updateStore);
 router.delete("/:id", StoreController.deleteStore);
