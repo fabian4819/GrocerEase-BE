@@ -23,3 +23,5 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+
+src/deletepls.js

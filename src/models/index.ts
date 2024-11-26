@@ -1,4 +1,4 @@
 import Store from './Store';
-import Item from './Item';
+import Item from './Product';
 
 export { Store, Item };

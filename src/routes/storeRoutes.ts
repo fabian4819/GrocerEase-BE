@@ -1,13 +1,17 @@
 import { Router } from 'express';
-// import StoreController from '../controllers/StoreController';
-import { checkRole } from '../middleware/roleCheck';
+import StoreController from '../controllers/StoreController';
+import { authMiddleware } from '../middleware/auth';
 
 const router = Router();
 
-// router.get('/', StoreController.getAllStores);
-// router.get('/:id', StoreController.getStoreById);
-// router.post('/', checkRole(['admin', 'owner']), StoreController.createStore);
-// router.put('/:id', checkRole(['admin', 'owner']), StoreController.updateStore);
-// router.delete('/:id', checkRole(['admin']), StoreController.deleteStore);
+// Public routes (dapat diakses tanpa login)
+router.get('/', StoreController.getAllStores);
+router.get('/:id', StoreController.getStoreById);
+
+// Protected routes (perlu login)
+router.use(authMiddleware);
+router.post('/', StoreController.createStore);
+router.put('/:id', StoreController.updateStore);
+router.delete('/:id', StoreController.deleteStore);
 
 export default router;
