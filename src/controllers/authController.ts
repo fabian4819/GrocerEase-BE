@@ -97,3 +97,58 @@ export const login = async (req: Request, res: Response) => {
         res.status(500).json({ message: 'Server error', error: error.message });
     }
 };
+
+export const editProfile = async (req: Request, res: Response) => {
+    try {
+        const userId = req.params.id;  // Get the user ID from the URL parameter
+        const { username, email, address, currentPassword, newPassword, confirmNewPassword } = req.body;
+
+        if (!userId) {
+            return res.status(400).json({ message: 'User ID is required' });
+        }
+
+        // Find the user in the database by their ID
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // If the user provided a new password, verify the current password
+        if (newPassword && !currentPassword) {
+            return res.status(400).json({ message: 'Current password is required when changing the password' });
+        }
+
+        if (currentPassword && !await bcrypt.compare(currentPassword, user.password_hash)) {
+            return res.status(401).json({ message: 'Current password is incorrect' });
+        }
+
+        // If new password and confirmation password match, update the password
+        if (newPassword && newPassword === confirmNewPassword) {
+            const salt = await bcrypt.genSalt(10);
+            user.password_hash = await bcrypt.hash(newPassword, salt);
+        }
+
+        // Update the user profile with the new data
+        user.username = username || user.username;
+        user.email = email || user.email;
+        user.address = address || user.address;
+
+        await user.save();  // Save the updated user to the database
+
+        res.status(200).json({
+            message: 'Profile updated successfully',
+            user: {
+                id: user._id,
+                email: user.email,
+                username: user.username,
+                name: user.name,
+                address: user.address,
+                latitude: user.latitude,
+                longitude: user.longitude
+            }
+        });
+    } catch (error: any) {
+        console.error('Error updating profile:', error);
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+};
