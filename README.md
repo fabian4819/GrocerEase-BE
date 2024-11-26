@@ -82,3 +82,7 @@ Made by:
 - 22/492727/TK/53940 Rama Sulaiman Nurcahyo
 - 22/496725/TK/54440 Wulan Tiarahayu
 - 22/496507/TK/54405 Fidelya Fredelina
+
+## Extras
+
+We use scraping to populate the store information. The scraping repo can be found here: https://github.com/lindduncoding/grocerease-scraper 
